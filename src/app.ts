@@ -14,6 +14,7 @@ const server = fastify();
 require("dotenv").config();
 
 server.register(multipart);
+
 server.register(fastifyCors, {
   origin: ["http://localhost:5173"],
   methods: ["GET", "POST", "PUT", "DELETE"],

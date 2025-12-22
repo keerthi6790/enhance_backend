@@ -57,7 +57,7 @@ server.register(RechargeRoutes, { prefix: "api/recharge" });
 server.register(ToolsRoutes, { prefix: "api/tools" });
 
 server
-  .listen({ port: 8080 })
+  .listen({ port: 8080, host: "0.0.0.0" })
   .then(() => console.log(`Process running on http://localhost:8080`))
   .catch((err) => {
     console.log({ err });

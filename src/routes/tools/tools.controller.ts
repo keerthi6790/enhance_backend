@@ -5,7 +5,7 @@ export async function processImagesController(
   images: any[],
   option: object,
   userId: string
-): Promise<any[] | "Please recharge"> {
+): Promise<any | "Please recharge"> {
   const credits = await checkUserCredits(userId);
   if (credits < images.length) {
     return "Please recharge";
@@ -25,13 +25,12 @@ export async function processImagesController(
     };
 
     const output = await replicate.run("topazlabs/image-upscale", { input });
+
+    console.log("Processed Images:", output);
+
+    return output;
   } catch (err) {
     console.error("Error processing images:", err);
     throw err;
   }
-  // Process each image in parallel and await all results
-
-  console.log("Processed Images:", output);
-
-  return output;
 }

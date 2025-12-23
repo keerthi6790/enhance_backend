@@ -15,8 +15,7 @@ export async function processImagesController(
 
   try {
     const input = {
-      image:
-        "https://replicate.delivery/pbxt/MtnpGxNIVJlHAMZmQNl5bLARbYpiLahniAYis3RsRN2KwhfJ/out-1.webp",
+      image: images[0],
       enhance_model: "Low Resolution V2",
       upscale_factor: "4x",
       face_enhancement: true,

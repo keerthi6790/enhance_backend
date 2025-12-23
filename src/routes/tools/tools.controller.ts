@@ -11,11 +11,13 @@ export async function processImagesController(
     return "Please recharge";
   }
 
+  const image = Buffer.from(images[0].buffer).toString("base64");
+
   await deductCredits(userId, images.length);
 
   try {
     const input = {
-      image: images[0],
+      image: `data:application/octet-stream;base64,${image}`,
       enhance_model: "Low Resolution V2",
       upscale_factor: "4x",
       face_enhancement: true,

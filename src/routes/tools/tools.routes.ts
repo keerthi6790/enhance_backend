@@ -42,7 +42,8 @@ export async function ToolsRoutes(server: FastifyInstance) {
       }
       // Convert Buffers to base64 strings for frontend
       reply.send({
-        processedImages: result.map((buf) => buf.toString("base64")),
+        processedImages: result,
+        url: result?.url(),
       });
     }
   );

@@ -51,7 +51,9 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 export const ModelName = {
   User: 'User',
   Recharge: 'Recharge',
-  Tool: 'Tool'
+  Tool: 'Tool',
+  PricingTier: 'PricingTier',
+  FAQ: 'FAQ'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -90,7 +92,14 @@ export const RechargeScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   amount: 'amount',
-  createdAt: 'createdAt'
+  currency: 'currency',
+  credits: 'credits',
+  razorpayOrderId: 'razorpayOrderId',
+  razorpayPaymentId: 'razorpayPaymentId',
+  razorpaySignature: 'razorpaySignature',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type RechargeScalarFieldEnum = (typeof RechargeScalarFieldEnum)[keyof typeof RechargeScalarFieldEnum]
@@ -108,6 +117,32 @@ export const ToolScalarFieldEnum = {
 } as const
 
 export type ToolScalarFieldEnum = (typeof ToolScalarFieldEnum)[keyof typeof ToolScalarFieldEnum]
+
+
+export const PricingTierScalarFieldEnum = {
+  id: 'id',
+  minAmount: 'minAmount',
+  multiplier: 'multiplier',
+  currency: 'currency',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  title: 'title',
+  desc: 'desc'
+} as const
+
+export type PricingTierScalarFieldEnum = (typeof PricingTierScalarFieldEnum)[keyof typeof PricingTierScalarFieldEnum]
+
+
+export const FAQScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  pagename: 'pagename',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FAQScalarFieldEnum = (typeof FAQScalarFieldEnum)[keyof typeof FAQScalarFieldEnum]
 
 
 export const SortOrder = {

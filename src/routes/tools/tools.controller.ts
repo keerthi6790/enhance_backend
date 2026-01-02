@@ -1,5 +1,5 @@
 import { checkUserCredits, deductCredits } from "../../utils/credits";
-import replicate from "../../utils/Replicate";
+import getReplicate from "../../utils/Replicate";
 
 export async function processImagesController(
   images: any[],
@@ -25,6 +25,7 @@ export async function processImagesController(
       face_enhancement_creativity: 0.5,
     };
 
+    const replicate = getReplicate();
     const output = await replicate.run("topazlabs/image-upscale", { input });
 
     console.log("Processed Images:", output);

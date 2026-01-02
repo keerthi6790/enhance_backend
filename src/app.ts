@@ -1,3 +1,4 @@
+require("dotenv").config();
 import fastify, { FastifyReply, FastifyRequest } from "fastify";
 import fjwt, { FastifyJWT } from "fastify-jwt";
 import { userSchema } from "./routes/user/user.schema";
@@ -6,12 +7,16 @@ import { rechargeSchema } from "./routes/recharge/recharge.schema";
 import { RechargeRoutes } from "./routes/recharge/recharge.routes";
 import { toolsSchema } from "./routes/tools/tools.schema";
 import { ToolsRoutes } from "./routes/tools/tools.routes";
+import { pricingSchema } from "./routes/pricing/pricing.schema";
+import { PricingRoutes } from "./routes/pricing/pricing.routes";
+import { faqSchema } from "./routes/faq/faq.schema";
+import { FaqRoutes } from "./routes/faq/faq.routes";
+import { paymentSchema } from "./routes/payment/payment.schema";
+import { PaymentRoutes } from "./routes/payment/payment.routes";
 import multipart from "@fastify/multipart";
 import fastifyCors from "@fastify/cors";
 
 const server = fastify();
-
-require("dotenv").config();
 
 server.register(multipart);
 
@@ -49,13 +54,16 @@ server.get("/", (request, reply) => {
   reply.code(200).send("Running Up..");
 });
 
-for (let schema of [...userSchema, ...rechargeSchema, ...toolsSchema]) {
+for (let schema of [...userSchema, ...rechargeSchema, ...toolsSchema, ...pricingSchema, ...paymentSchema, ...faqSchema]) {
   server.addSchema(schema);
 }
 
 server.register(UserRoutes, { prefix: "api/user" });
 server.register(RechargeRoutes, { prefix: "api/recharge" });
 server.register(ToolsRoutes, { prefix: "api/tools" });
+server.register(PricingRoutes, { prefix: "api/pricing" });
+server.register(FaqRoutes, { prefix: "api/faq" });
+server.register(PaymentRoutes, { prefix: "api/payment" });
 
 server
   .listen({ port: 8080, host: "0.0.0.0" })

@@ -32,3 +32,13 @@ export type Recharge = Prisma.RechargeModel
  * 
  */
 export type Tool = Prisma.ToolModel
+/**
+ * Model PricingTier
+ * 
+ */
+export type PricingTier = Prisma.PricingTierModel
+/**
+ * Model FAQ
+ * 
+ */
+export type FAQ = Prisma.FAQModel

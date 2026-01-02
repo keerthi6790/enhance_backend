@@ -15,3 +15,12 @@ export const SignInType = {
 } as const
 
 export type SignInType = (typeof SignInType)[keyof typeof SignInType]
+
+
+export const RechargeStatus = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED'
+} as const
+
+export type RechargeStatus = (typeof RechargeStatus)[keyof typeof RechargeStatus]

@@ -3,6 +3,9 @@ import prisma from "../../utils/Prisma";
 import { CreateUser, LoginUser } from "./user.schema";
 import bcrypt from "bcrypt";
 import { GenerateSixDigitOtp } from "../../utils/GenerateOtp";
+import { OAuth2Client } from "google-auth-library";
+
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 interface OtpStore {
   [email: string]: { otp: number; expiresAt: number };
@@ -234,16 +237,39 @@ export const loginUser = async (
 export const googleAuth = async (
   req: FastifyRequest<{
     Body: {
-      email: string;
-      firstName: string;
-      lastName: string;
+      idToken: string;
+      email?: string;
+      firstName?: string;
+      lastName?: string;
       phoneNumber?: string;
     };
   }>,
   reply: FastifyReply
 ) => {
   try {
-    const { email, firstName, lastName, phoneNumber } = req.body;
+    const { idToken, phoneNumber } = req.body;
+
+    // Verify Google ID Token
+    const ticket = await client.verifyIdToken({
+      idToken,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+
+    const payload = ticket.getPayload();
+    if (!payload) {
+      return reply.code(400).send({ message: "Invalid Google token" });
+    }
+
+    const {
+      email,
+      given_name: firstName,
+      family_name: lastName,
+      sub: googleId,
+    } = payload;
+
+    if (!email) {
+      return reply.code(400).send({ message: "Email not provided by Google" });
+    }
 
     // Check if user already exists
     let user = await prisma.user.findUnique({
@@ -262,8 +288,8 @@ export const googleAuth = async (
       user = await prisma.user.create({
         data: {
           email,
-          firstName,
-          lastName,
+          firstName: firstName || "Google",
+          lastName: lastName || "User",
           phoneNumber: phoneNumber || null,
           hashed_password: null,
           signInType: "GOOGLE",
@@ -288,6 +314,7 @@ export const googleAuth = async (
       },
     });
   } catch (error) {
+    console.error("Google Auth Error:", error);
     reply.code(500).send({
       message: "Error during Google authentication",
       error: error instanceof Error ? error.message : "Unknown error",

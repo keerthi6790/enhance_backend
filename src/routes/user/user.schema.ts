@@ -35,9 +35,10 @@ export const VerifyOtpSchema = z.object({
 });
 
 export const GoogleAuthSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  firstName: z.string(),
-  lastName: z.string(),
+  idToken: z.string(),
+  email: z.string().email("Invalid email address").optional(),
+  firstName: z.string().optional(),
+  lastName: z.string().optional(),
   phoneNumber: z.string().optional(),
 });
 

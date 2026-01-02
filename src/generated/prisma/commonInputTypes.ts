@@ -154,6 +154,50 @@ export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
 }
 
+export type FloatFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  in?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel>
+  notIn?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel>
+  lt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedFloatFilter<$PrismaModel> | number
+}
+
+export type EnumRechargeStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.RechargeStatus | Prisma.EnumRechargeStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.RechargeStatus[] | Prisma.ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.RechargeStatus[] | Prisma.ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumRechargeStatusFilter<$PrismaModel> | $Enums.RechargeStatus
+}
+
+export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  in?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel>
+  notIn?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel>
+  lt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedFloatWithAggregatesFilter<$PrismaModel> | number
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _avg?: Prisma.NestedFloatFilter<$PrismaModel>
+  _sum?: Prisma.NestedFloatFilter<$PrismaModel>
+  _min?: Prisma.NestedFloatFilter<$PrismaModel>
+  _max?: Prisma.NestedFloatFilter<$PrismaModel>
+}
+
+export type EnumRechargeStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.RechargeStatus | Prisma.EnumRechargeStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.RechargeStatus[] | Prisma.ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.RechargeStatus[] | Prisma.ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumRechargeStatusWithAggregatesFilter<$PrismaModel> | $Enums.RechargeStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumRechargeStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumRechargeStatusFilter<$PrismaModel>
+}
+
 export type BoolFilter<$PrismaModel = never> = {
   equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
   not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
@@ -318,6 +362,39 @@ export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedDateTimeFilter<$PrismaModel>
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
+}
+
+export type NestedEnumRechargeStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.RechargeStatus | Prisma.EnumRechargeStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.RechargeStatus[] | Prisma.ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.RechargeStatus[] | Prisma.ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumRechargeStatusFilter<$PrismaModel> | $Enums.RechargeStatus
+}
+
+export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  in?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel>
+  notIn?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel>
+  lt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedFloatWithAggregatesFilter<$PrismaModel> | number
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _avg?: Prisma.NestedFloatFilter<$PrismaModel>
+  _sum?: Prisma.NestedFloatFilter<$PrismaModel>
+  _min?: Prisma.NestedFloatFilter<$PrismaModel>
+  _max?: Prisma.NestedFloatFilter<$PrismaModel>
+}
+
+export type NestedEnumRechargeStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.RechargeStatus | Prisma.EnumRechargeStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.RechargeStatus[] | Prisma.ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.RechargeStatus[] | Prisma.ListEnumRechargeStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumRechargeStatusWithAggregatesFilter<$PrismaModel> | $Enums.RechargeStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumRechargeStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumRechargeStatusFilter<$PrismaModel>
 }
 
 export type NestedBoolFilter<$PrismaModel = never> = {

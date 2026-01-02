@@ -11,4 +11,6 @@
 export type * from './models/User'
 export type * from './models/Recharge'
 export type * from './models/Tool'
+export type * from './models/PricingTier'
+export type * from './models/FAQ'
 export type * from './commonInputTypes'

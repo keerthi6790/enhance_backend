@@ -99,11 +99,6 @@ export const getRechargeHistory = async (
       orderBy: { createdAt: "desc" },
       take: limit,
       skip: offset,
-      select: {
-        id: true,
-        amount: true,
-        createdAt: true,
-      },
     });
 
     // Get total count
@@ -122,6 +117,8 @@ export const getRechargeHistory = async (
         id: r.id,
         amount: r.amount,
         date: r.createdAt,
+        credist: r.credits,
+        status: r.status,
       })),
       availableCredits: user?.credits || 0,
       total,

@@ -1,7 +1,17 @@
 import Replicate from "replicate";
 
-const replicate = new Replicate({
-  auth: process.env.REPLICATE_API_TOKEN,
-});
+let replicateInstance: Replicate | null = null;
 
-export default replicate;
+function getReplicate(): Replicate {
+  if (!replicateInstance) {
+    if (!process.env.REPLICATE_API_TOKEN) {
+      throw new Error("REPLICATE_API_TOKEN is not set");
+    }
+    replicateInstance = new Replicate({
+      auth: process.env.REPLICATE_API_TOKEN,
+    });
+  }
+  return replicateInstance;
+}
+
+export default getReplicate;

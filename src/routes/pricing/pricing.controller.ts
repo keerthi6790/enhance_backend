@@ -38,6 +38,10 @@ export async function calculateCredits(
     const ip = (req.headers["x-forwarded-for"] as string) || req.ip;
     const currency = getCurrencyFromIp(ip);
 
+    if (currency === 'INR' && amount < 100) {
+      return reply.code(400).send({ message: "Minimum amount for INR is ₹100" });
+    }
+
     const tier = await prisma.pricingTier.findFirst({
       where: {
         minAmount: { lte: amount },

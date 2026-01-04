@@ -15,6 +15,8 @@ import { paymentSchema } from "./routes/payment/payment.schema";
 import { PaymentRoutes } from "./routes/payment/payment.routes";
 import multipart from "@fastify/multipart";
 import fastifyCors from "@fastify/cors";
+import { CommonRoutes } from "./routes/common/common.routes";
+import { commonSchemas } from "./routes/common/common.schema";
 
 const server = fastify();
 
@@ -54,12 +56,21 @@ server.get("/", (request, reply) => {
   reply.code(200).send("Running Up..");
 });
 
-for (let schema of [...userSchema, ...rechargeSchema, ...toolsSchema, ...pricingSchema, ...paymentSchema, ...faqSchema]) {
+for (let schema of [
+  ...userSchema,
+  ...rechargeSchema,
+  ...toolsSchema,
+  ...pricingSchema,
+  ...paymentSchema,
+  ...faqSchema,
+  ...commonSchemas,
+]) {
   server.addSchema(schema);
 }
 
 server.register(UserRoutes, { prefix: "api/user" });
 server.register(RechargeRoutes, { prefix: "api/recharge" });
+server.register(CommonRoutes, { prefix: "api/common" });
 server.register(ToolsRoutes, { prefix: "api/tools" });
 server.register(PricingRoutes, { prefix: "api/pricing" });
 server.register(FaqRoutes, { prefix: "api/faq" });

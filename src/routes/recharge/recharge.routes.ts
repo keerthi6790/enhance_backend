@@ -3,7 +3,7 @@ import {
   rechargeCredits,
   getAvailableCredits,
   getRechargeHistory,
-} from "./rechare.controller";
+} from "./recharge.controller";
 import { $ref } from "./recharge.schema";
 
 export const RechargeRoutes = async (app: FastifyInstance) => {

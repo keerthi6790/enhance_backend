@@ -19,6 +19,10 @@ export async function createOrder(
         return reply.code(401).send({ message: "Unauthorized" });
     }
 
+    if (currency === 'INR' && amount < 100) {
+        return reply.code(400).send({ message: "Minimum recharge amount for INR is ₹100" });
+    }
+
     try {
         // 1. Calculate credits
         const tier = await prisma.pricingTier.findFirst({

@@ -8,7 +8,7 @@ export async function ToolsRoutes(server: FastifyInstance) {
       preHandler: [server.authenticate],
     },
     async (req, reply) => {
-      const userId = req.user.id;
+      const userId = (req.user as any).id;
       const images: any[] = [];
       let option = {};
 
@@ -24,7 +24,7 @@ export async function ToolsRoutes(server: FastifyInstance) {
           });
         } else if (part.type === "field" && part.fieldname === "option") {
           try {
-            option = JSON.parse(part.value);
+            option = JSON.parse(part.value as string);
           } catch {
             option = {};
           }
@@ -40,10 +40,9 @@ export async function ToolsRoutes(server: FastifyInstance) {
       if (result === "Please recharge") {
         return reply.status(402).send({ error: "Please recharge" });
       }
-      // Convert Buffers to base64 strings for frontend
+      // Return the processed image URL/result
       reply.send({
         processedImages: result,
-        url: result?.url(),
       });
     }
   );

@@ -154,6 +154,7 @@ export const registerUser = async (
         email: newUser.email,
         firstName: newUser.firstName,
         lastName: newUser.lastName,
+        credits: newUser.credits,
       },
     });
   } catch (error) {
@@ -223,6 +224,7 @@ export const loginUser = async (
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
+        credits: user.credits,
       },
     });
   } catch (error) {
@@ -311,6 +313,7 @@ export const googleAuth = async (
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
+        credits: user.credits,
       },
     });
   } catch (error) {
@@ -344,6 +347,7 @@ export const getUserData = async (
         lastName: true,
         phoneNumber: true,
         signInType: true,
+        credits: true,
         createdAt: true,
         updatedAt: true,
       },
@@ -416,6 +420,7 @@ export const editUser = async (
         lastName: true,
         phoneNumber: true,
         signInType: true,
+        credits: true,
         createdAt: true,
         updatedAt: true,
       },

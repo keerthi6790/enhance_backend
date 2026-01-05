@@ -23,7 +23,7 @@ const server = fastify();
 server.register(multipart);
 
 server.register(fastifyCors, {
-  origin: ["http://localhost:5173", "https://enhanceassets.netlify.app/"],
+  origin: ["http://localhost:5173", "https://enhanceassets.netlify.app"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 });

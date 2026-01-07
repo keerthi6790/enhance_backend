@@ -42,3 +42,8 @@ export type PricingTier = Prisma.PricingTierModel
  * 
  */
 export type FAQ = Prisma.FAQModel
+/**
+ * Model SeoProps
+ * 
+ */
+export type SeoProps = Prisma.SeoPropsModel

@@ -17,6 +17,8 @@ import multipart from "@fastify/multipart";
 import fastifyCors from "@fastify/cors";
 import { CommonRoutes } from "./routes/common/common.routes";
 import { commonSchemas } from "./routes/common/common.schema";
+import { seoPropsSchema } from "./routes/seoprops/seoprops.schema";
+import { SeoPropsRoutes } from "./routes/seoprops/seoprops.routes";
 
 const server = fastify();
 
@@ -64,6 +66,7 @@ for (let schema of [
   ...paymentSchema,
   ...faqSchema,
   ...commonSchemas,
+  ...seoPropsSchema,
 ]) {
   server.addSchema(schema);
 }
@@ -75,6 +78,7 @@ server.register(ToolsRoutes, { prefix: "api/tools" });
 server.register(PricingRoutes, { prefix: "api/pricing" });
 server.register(FaqRoutes, { prefix: "api/faq" });
 server.register(PaymentRoutes, { prefix: "api/payment" });
+server.register(SeoPropsRoutes, { prefix: "api/seoprops" });
 
 server
   .listen({ port: 8080, host: "0.0.0.0" })

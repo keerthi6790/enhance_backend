@@ -53,7 +53,8 @@ export const ModelName = {
   Recharge: 'Recharge',
   Tool: 'Tool',
   PricingTier: 'PricingTier',
-  FAQ: 'FAQ'
+  FAQ: 'FAQ',
+  SeoProps: 'SeoProps'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -143,6 +144,20 @@ export const FAQScalarFieldEnum = {
 } as const
 
 export type FAQScalarFieldEnum = (typeof FAQScalarFieldEnum)[keyof typeof FAQScalarFieldEnum]
+
+
+export const SeoPropsScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  keywords: 'keywords',
+  image: 'image',
+  pagename: 'pagename',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SeoPropsScalarFieldEnum = (typeof SeoPropsScalarFieldEnum)[keyof typeof SeoPropsScalarFieldEnum]
 
 
 export const SortOrder = {

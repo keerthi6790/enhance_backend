@@ -394,7 +394,8 @@ export const ModelName = {
   Recharge: 'Recharge',
   Tool: 'Tool',
   PricingTier: 'PricingTier',
-  FAQ: 'FAQ'
+  FAQ: 'FAQ',
+  SeoProps: 'SeoProps'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -410,7 +411,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "recharge" | "tool" | "pricingTier" | "fAQ"
+    modelProps: "user" | "recharge" | "tool" | "pricingTier" | "fAQ" | "seoProps"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -784,6 +785,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    SeoProps: {
+      payload: Prisma.$SeoPropsPayload<ExtArgs>
+      fields: Prisma.SeoPropsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SeoPropsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeoPropsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SeoPropsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeoPropsPayload>
+        }
+        findFirst: {
+          args: Prisma.SeoPropsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeoPropsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SeoPropsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeoPropsPayload>
+        }
+        findMany: {
+          args: Prisma.SeoPropsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeoPropsPayload>[]
+        }
+        create: {
+          args: Prisma.SeoPropsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeoPropsPayload>
+        }
+        createMany: {
+          args: Prisma.SeoPropsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SeoPropsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeoPropsPayload>[]
+        }
+        delete: {
+          args: Prisma.SeoPropsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeoPropsPayload>
+        }
+        update: {
+          args: Prisma.SeoPropsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeoPropsPayload>
+        }
+        deleteMany: {
+          args: Prisma.SeoPropsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SeoPropsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SeoPropsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeoPropsPayload>[]
+        }
+        upsert: {
+          args: Prisma.SeoPropsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SeoPropsPayload>
+        }
+        aggregate: {
+          args: Prisma.SeoPropsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSeoProps>
+        }
+        groupBy: {
+          args: Prisma.SeoPropsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SeoPropsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SeoPropsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SeoPropsCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -894,6 +969,20 @@ export const FAQScalarFieldEnum = {
 } as const
 
 export type FAQScalarFieldEnum = (typeof FAQScalarFieldEnum)[keyof typeof FAQScalarFieldEnum]
+
+
+export const SeoPropsScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  keywords: 'keywords',
+  image: 'image',
+  pagename: 'pagename',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SeoPropsScalarFieldEnum = (typeof SeoPropsScalarFieldEnum)[keyof typeof SeoPropsScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1108,6 +1197,7 @@ export type GlobalOmitConfig = {
   tool?: Prisma.ToolOmit
   pricingTier?: Prisma.PricingTierOmit
   fAQ?: Prisma.FAQOmit
+  seoProps?: Prisma.SeoPropsOmit
 }
 
 /* Types for Logging */

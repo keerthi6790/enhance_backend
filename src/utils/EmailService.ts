@@ -1,47 +1,38 @@
-import nodemailer from "nodemailer";
-
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: parseInt(process.env.SMTP_PORT || "587"),
-  secure: process.env.SMTP_SECURE === "true",
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+import Mailgun from "mailgun.js";
+import FormData from "form-data"; // form-data v4.0.1
 
 export async function sendOtpEmail(email: string, otp: number) {
-  const mailOptions = {
-    from: process.env.SMTP_FROM || '"Enhance AI" <noreply@enhanceai.com>',
-    to: email,
-    subject: "Your Verification Code - Enhance AI",
-    text: `Your verification code is: ${otp}. It will expire in 10 minutes.`,
-    html: `
-      <div style="font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-        <h2 style="color: #4f46e5; text-align: center;">Enhance AI</h2>
-        <p>Hello,</p>
-        <p>Your verification code for signing up is:</p>
-        <div style="background: #f3f4f6; padding: 20px; text-align: center; font-size: 32px; font-weight: bold; letter-spacing: 5px; border-radius: 8px; margin: 20px 0;">
-          ${otp}
-        </div>
-        <p>This code will expire in 10 minutes. If you didn't request this, please ignore this email.</p>
-        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
-        <p style="color: #6b7280; font-size: 12px; text-align: center;">&copy; 2026 Enhance AI. All rights reserved.</p>
-      </div>
-    `,
-  };
+  const mailgun = new Mailgun(FormData);
+
+  const mg = mailgun.client({
+    username: "api",
+    key: process.env.MAIL_GUN_API_KEY || "",
+    // When you have an EU-domain, you must specify the endpoint:
+    // url: "https://api.eu.mailgun.net"
+  });
 
   try {
-    await transporter.sendMail(mailOptions);
-    console.log(`OTP email sent to ${email}`);
+    const data = await mg.messages.create(
+      "sandboxe85f63a918af4937a02f8434b6bed8c8.mailgun.org",
+      {
+        from: "Mailgun Sandbox <postmaster@sandboxe85f63a918af4937a02f8434b6bed8c8.mailgun.org>",
+        to: [email],
+        subject: "Hello Keerthivasan",
+        text: `Congratulations Keerthivasan, you just sent an email with Mailgun! You are truly awesome! Otp is ${otp}`,
+      },
+    );
+
+    console.log(data); // logs response data
   } catch (error) {
-    console.error("Error sending OTP email:", error);
-    // In development, we still want to see the OTP in logs if email fails
-    console.log(`FALLBACK: OTP for ${email}: ${otp}`);
+    console.log(error); //logs any error
   }
 }
 
-export async function sendTeamInvitationEmail(email: string, teamName: string, inviteLink: string) {
+export async function sendTeamInvitationEmail(
+  email: string,
+  teamName: string,
+  inviteLink: string,
+) {
   const mailOptions = {
     from: process.env.SMTP_FROM || '"Enhance AI" <noreply@enhanceai.com>',
     to: email,
@@ -107,7 +98,11 @@ export async function sendForgotPasswordEmail(email: string, otp: number) {
   }
 }
 
-export async function sendRegistrationInvitationEmail(email: string, teamName: string, inviteLink: string) {
+export async function sendRegistrationInvitationEmail(
+  email: string,
+  teamName: string,
+  inviteLink: string,
+) {
   const mailOptions = {
     from: process.env.SMTP_FROM || '"Enhance AI" <noreply@enhanceai.com>',
     to: email,
@@ -141,7 +136,8 @@ export async function sendRegistrationInvitationEmail(email: string, teamName: s
   } catch (error) {
     console.error("Error sending registration invitation email:", error);
     // In development, we still want to see the link in logs if email fails
-    console.log(`FALLBACK: Registration invitation link for ${email}: ${inviteLink}`);
+    console.log(
+      `FALLBACK: Registration invitation link for ${email}: ${inviteLink}`,
+    );
   }
 }
-

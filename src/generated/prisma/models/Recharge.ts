@@ -40,42 +40,42 @@ export type RechargeMinAggregateOutputType = {
   id: string | null
   userId: string | null
   amount: number | null
-  currency: string | null
+  createdAt: Date | null
   credits: number | null
+  currency: string | null
+  status: $Enums.RechargeStatus | null
+  updatedAt: Date | null
   razorpayOrderId: string | null
   razorpayPaymentId: string | null
   razorpaySignature: string | null
-  status: $Enums.RechargeStatus | null
-  createdAt: Date | null
-  updatedAt: Date | null
 }
 
 export type RechargeMaxAggregateOutputType = {
   id: string | null
   userId: string | null
   amount: number | null
-  currency: string | null
+  createdAt: Date | null
   credits: number | null
+  currency: string | null
+  status: $Enums.RechargeStatus | null
+  updatedAt: Date | null
   razorpayOrderId: string | null
   razorpayPaymentId: string | null
   razorpaySignature: string | null
-  status: $Enums.RechargeStatus | null
-  createdAt: Date | null
-  updatedAt: Date | null
 }
 
 export type RechargeCountAggregateOutputType = {
   id: number
   userId: number
   amount: number
-  currency: number
+  createdAt: number
   credits: number
+  currency: number
+  status: number
+  updatedAt: number
   razorpayOrderId: number
   razorpayPaymentId: number
   razorpaySignature: number
-  status: number
-  createdAt: number
-  updatedAt: number
   _all: number
 }
 
@@ -94,42 +94,42 @@ export type RechargeMinAggregateInputType = {
   id?: true
   userId?: true
   amount?: true
-  currency?: true
+  createdAt?: true
   credits?: true
+  currency?: true
+  status?: true
+  updatedAt?: true
   razorpayOrderId?: true
   razorpayPaymentId?: true
   razorpaySignature?: true
-  status?: true
-  createdAt?: true
-  updatedAt?: true
 }
 
 export type RechargeMaxAggregateInputType = {
   id?: true
   userId?: true
   amount?: true
-  currency?: true
+  createdAt?: true
   credits?: true
+  currency?: true
+  status?: true
+  updatedAt?: true
   razorpayOrderId?: true
   razorpayPaymentId?: true
   razorpaySignature?: true
-  status?: true
-  createdAt?: true
-  updatedAt?: true
 }
 
 export type RechargeCountAggregateInputType = {
   id?: true
   userId?: true
   amount?: true
-  currency?: true
+  createdAt?: true
   credits?: true
+  currency?: true
+  status?: true
+  updatedAt?: true
   razorpayOrderId?: true
   razorpayPaymentId?: true
   razorpaySignature?: true
-  status?: true
-  createdAt?: true
-  updatedAt?: true
   _all?: true
 }
 
@@ -223,14 +223,14 @@ export type RechargeGroupByOutputType = {
   id: string
   userId: string
   amount: number
-  currency: string
+  createdAt: Date
   credits: number
+  currency: string
+  status: $Enums.RechargeStatus
+  updatedAt: Date
   razorpayOrderId: string | null
   razorpayPaymentId: string | null
   razorpaySignature: string | null
-  status: $Enums.RechargeStatus
-  createdAt: Date
-  updatedAt: Date
   _count: RechargeCountAggregateOutputType | null
   _avg: RechargeAvgAggregateOutputType | null
   _sum: RechargeSumAggregateOutputType | null
@@ -260,30 +260,30 @@ export type RechargeWhereInput = {
   id?: Prisma.StringFilter<"Recharge"> | string
   userId?: Prisma.StringFilter<"Recharge"> | string
   amount?: Prisma.FloatFilter<"Recharge"> | number
-  currency?: Prisma.StringFilter<"Recharge"> | string
+  createdAt?: Prisma.DateTimeFilter<"Recharge"> | Date | string
   credits?: Prisma.IntFilter<"Recharge"> | number
+  currency?: Prisma.StringFilter<"Recharge"> | string
+  status?: Prisma.EnumRechargeStatusFilter<"Recharge"> | $Enums.RechargeStatus
+  updatedAt?: Prisma.DateTimeFilter<"Recharge"> | Date | string
   razorpayOrderId?: Prisma.StringNullableFilter<"Recharge"> | string | null
   razorpayPaymentId?: Prisma.StringNullableFilter<"Recharge"> | string | null
   razorpaySignature?: Prisma.StringNullableFilter<"Recharge"> | string | null
-  status?: Prisma.EnumRechargeStatusFilter<"Recharge"> | $Enums.RechargeStatus
-  createdAt?: Prisma.DateTimeFilter<"Recharge"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Recharge"> | Date | string
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type RechargeOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   credits?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   razorpayOrderId?: Prisma.SortOrderInput | Prisma.SortOrder
   razorpayPaymentId?: Prisma.SortOrderInput | Prisma.SortOrder
   razorpaySignature?: Prisma.SortOrderInput | Prisma.SortOrder
-  status?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
-  user?: Prisma.UserOrderByWithRelationInput
+  User?: Prisma.UserOrderByWithRelationInput
 }
 
 export type RechargeWhereUniqueInput = Prisma.AtLeast<{
@@ -295,27 +295,27 @@ export type RechargeWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.RechargeWhereInput | Prisma.RechargeWhereInput[]
   userId?: Prisma.StringFilter<"Recharge"> | string
   amount?: Prisma.FloatFilter<"Recharge"> | number
-  currency?: Prisma.StringFilter<"Recharge"> | string
-  credits?: Prisma.IntFilter<"Recharge"> | number
-  razorpaySignature?: Prisma.StringNullableFilter<"Recharge"> | string | null
-  status?: Prisma.EnumRechargeStatusFilter<"Recharge"> | $Enums.RechargeStatus
   createdAt?: Prisma.DateTimeFilter<"Recharge"> | Date | string
+  credits?: Prisma.IntFilter<"Recharge"> | number
+  currency?: Prisma.StringFilter<"Recharge"> | string
+  status?: Prisma.EnumRechargeStatusFilter<"Recharge"> | $Enums.RechargeStatus
   updatedAt?: Prisma.DateTimeFilter<"Recharge"> | Date | string
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  razorpaySignature?: Prisma.StringNullableFilter<"Recharge"> | string | null
+  User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "razorpayOrderId" | "razorpayPaymentId">
 
 export type RechargeOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   credits?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   razorpayOrderId?: Prisma.SortOrderInput | Prisma.SortOrder
   razorpayPaymentId?: Prisma.SortOrderInput | Prisma.SortOrder
   razorpaySignature?: Prisma.SortOrderInput | Prisma.SortOrder
-  status?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
   _count?: Prisma.RechargeCountOrderByAggregateInput
   _avg?: Prisma.RechargeAvgOrderByAggregateInput
   _max?: Prisma.RechargeMaxOrderByAggregateInput
@@ -330,111 +330,163 @@ export type RechargeScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Recharge"> | string
   userId?: Prisma.StringWithAggregatesFilter<"Recharge"> | string
   amount?: Prisma.FloatWithAggregatesFilter<"Recharge"> | number
-  currency?: Prisma.StringWithAggregatesFilter<"Recharge"> | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Recharge"> | Date | string
   credits?: Prisma.IntWithAggregatesFilter<"Recharge"> | number
+  currency?: Prisma.StringWithAggregatesFilter<"Recharge"> | string
+  status?: Prisma.EnumRechargeStatusWithAggregatesFilter<"Recharge"> | $Enums.RechargeStatus
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Recharge"> | Date | string
   razorpayOrderId?: Prisma.StringNullableWithAggregatesFilter<"Recharge"> | string | null
   razorpayPaymentId?: Prisma.StringNullableWithAggregatesFilter<"Recharge"> | string | null
   razorpaySignature?: Prisma.StringNullableWithAggregatesFilter<"Recharge"> | string | null
-  status?: Prisma.EnumRechargeStatusWithAggregatesFilter<"Recharge"> | $Enums.RechargeStatus
-  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Recharge"> | Date | string
-  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Recharge"> | Date | string
 }
 
 export type RechargeCreateInput = {
-  id?: string
+  id: string
   amount: number
-  currency?: string
+  createdAt?: Date | string
   credits: number
+  currency?: string
+  status?: $Enums.RechargeStatus
+  updatedAt: Date | string
   razorpayOrderId?: string | null
   razorpayPaymentId?: string | null
   razorpaySignature?: string | null
-  status?: $Enums.RechargeStatus
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutRechargesInput
+  User: Prisma.UserCreateNestedOneWithoutRechargeInput
 }
 
 export type RechargeUncheckedCreateInput = {
-  id?: string
+  id: string
   userId: string
   amount: number
-  currency?: string
+  createdAt?: Date | string
   credits: number
+  currency?: string
+  status?: $Enums.RechargeStatus
+  updatedAt: Date | string
   razorpayOrderId?: string | null
   razorpayPaymentId?: string | null
   razorpaySignature?: string | null
-  status?: $Enums.RechargeStatus
-  createdAt?: Date | string
-  updatedAt?: Date | string
 }
 
 export type RechargeUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   credits?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   razorpayOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpayPaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpaySignature?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutRechargesNestedInput
+  User?: Prisma.UserUpdateOneRequiredWithoutRechargeNestedInput
 }
 
 export type RechargeUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   credits?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   razorpayOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpayPaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpaySignature?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RechargeCreateManyInput = {
-  id?: string
+  id: string
   userId: string
   amount: number
-  currency?: string
+  createdAt?: Date | string
   credits: number
+  currency?: string
+  status?: $Enums.RechargeStatus
+  updatedAt: Date | string
   razorpayOrderId?: string | null
   razorpayPaymentId?: string | null
   razorpaySignature?: string | null
-  status?: $Enums.RechargeStatus
-  createdAt?: Date | string
-  updatedAt?: Date | string
 }
 
 export type RechargeUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   credits?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   razorpayOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpayPaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpaySignature?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RechargeUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   credits?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   razorpayOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpayPaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpaySignature?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type RechargeCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  amount?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  credits?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  razorpayOrderId?: Prisma.SortOrder
+  razorpayPaymentId?: Prisma.SortOrder
+  razorpaySignature?: Prisma.SortOrder
+}
+
+export type RechargeAvgOrderByAggregateInput = {
+  amount?: Prisma.SortOrder
+  credits?: Prisma.SortOrder
+}
+
+export type RechargeMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  amount?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  credits?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  razorpayOrderId?: Prisma.SortOrder
+  razorpayPaymentId?: Prisma.SortOrder
+  razorpaySignature?: Prisma.SortOrder
+}
+
+export type RechargeMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  amount?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  credits?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  razorpayOrderId?: Prisma.SortOrder
+  razorpayPaymentId?: Prisma.SortOrder
+  razorpaySignature?: Prisma.SortOrder
+}
+
+export type RechargeSumOrderByAggregateInput = {
+  amount?: Prisma.SortOrder
+  credits?: Prisma.SortOrder
 }
 
 export type RechargeListRelationFilter = {
@@ -447,56 +499,20 @@ export type RechargeOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type RechargeCountOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
-  amount?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
-  credits?: Prisma.SortOrder
-  razorpayOrderId?: Prisma.SortOrder
-  razorpayPaymentId?: Prisma.SortOrder
-  razorpaySignature?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
-export type RechargeAvgOrderByAggregateInput = {
-  amount?: Prisma.SortOrder
-  credits?: Prisma.SortOrder
+export type EnumRechargeStatusFieldUpdateOperationsInput = {
+  set?: $Enums.RechargeStatus
 }
 
-export type RechargeMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
-  amount?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
-  credits?: Prisma.SortOrder
-  razorpayOrderId?: Prisma.SortOrder
-  razorpayPaymentId?: Prisma.SortOrder
-  razorpaySignature?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
-}
-
-export type RechargeMinOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
-  amount?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
-  credits?: Prisma.SortOrder
-  razorpayOrderId?: Prisma.SortOrder
-  razorpayPaymentId?: Prisma.SortOrder
-  razorpaySignature?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
-}
-
-export type RechargeSumOrderByAggregateInput = {
-  amount?: Prisma.SortOrder
-  credits?: Prisma.SortOrder
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type RechargeCreateNestedManyWithoutUserInput = {
@@ -541,42 +557,30 @@ export type RechargeUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.RechargeScalarWhereInput | Prisma.RechargeScalarWhereInput[]
 }
 
-export type FloatFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
-export type EnumRechargeStatusFieldUpdateOperationsInput = {
-  set?: $Enums.RechargeStatus
-}
-
 export type RechargeCreateWithoutUserInput = {
-  id?: string
+  id: string
   amount: number
-  currency?: string
+  createdAt?: Date | string
   credits: number
+  currency?: string
+  status?: $Enums.RechargeStatus
+  updatedAt: Date | string
   razorpayOrderId?: string | null
   razorpayPaymentId?: string | null
   razorpaySignature?: string | null
-  status?: $Enums.RechargeStatus
-  createdAt?: Date | string
-  updatedAt?: Date | string
 }
 
 export type RechargeUncheckedCreateWithoutUserInput = {
-  id?: string
+  id: string
   amount: number
-  currency?: string
+  createdAt?: Date | string
   credits: number
+  currency?: string
+  status?: $Enums.RechargeStatus
+  updatedAt: Date | string
   razorpayOrderId?: string | null
   razorpayPaymentId?: string | null
   razorpaySignature?: string | null
-  status?: $Enums.RechargeStatus
-  createdAt?: Date | string
-  updatedAt?: Date | string
 }
 
 export type RechargeCreateOrConnectWithoutUserInput = {
@@ -612,66 +616,66 @@ export type RechargeScalarWhereInput = {
   id?: Prisma.StringFilter<"Recharge"> | string
   userId?: Prisma.StringFilter<"Recharge"> | string
   amount?: Prisma.FloatFilter<"Recharge"> | number
-  currency?: Prisma.StringFilter<"Recharge"> | string
+  createdAt?: Prisma.DateTimeFilter<"Recharge"> | Date | string
   credits?: Prisma.IntFilter<"Recharge"> | number
+  currency?: Prisma.StringFilter<"Recharge"> | string
+  status?: Prisma.EnumRechargeStatusFilter<"Recharge"> | $Enums.RechargeStatus
+  updatedAt?: Prisma.DateTimeFilter<"Recharge"> | Date | string
   razorpayOrderId?: Prisma.StringNullableFilter<"Recharge"> | string | null
   razorpayPaymentId?: Prisma.StringNullableFilter<"Recharge"> | string | null
   razorpaySignature?: Prisma.StringNullableFilter<"Recharge"> | string | null
-  status?: Prisma.EnumRechargeStatusFilter<"Recharge"> | $Enums.RechargeStatus
-  createdAt?: Prisma.DateTimeFilter<"Recharge"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Recharge"> | Date | string
 }
 
 export type RechargeCreateManyUserInput = {
-  id?: string
+  id: string
   amount: number
-  currency?: string
+  createdAt?: Date | string
   credits: number
+  currency?: string
+  status?: $Enums.RechargeStatus
+  updatedAt: Date | string
   razorpayOrderId?: string | null
   razorpayPaymentId?: string | null
   razorpaySignature?: string | null
-  status?: $Enums.RechargeStatus
-  createdAt?: Date | string
-  updatedAt?: Date | string
 }
 
 export type RechargeUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   credits?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   razorpayOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpayPaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpaySignature?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RechargeUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   credits?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   razorpayOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpayPaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpaySignature?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RechargeUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   amount?: Prisma.FloatFieldUpdateOperationsInput | number
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   credits?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   razorpayOrderId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpayPaymentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   razorpaySignature?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumRechargeStatusFieldUpdateOperationsInput | $Enums.RechargeStatus
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -680,89 +684,89 @@ export type RechargeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   id?: boolean
   userId?: boolean
   amount?: boolean
-  currency?: boolean
+  createdAt?: boolean
   credits?: boolean
+  currency?: boolean
+  status?: boolean
+  updatedAt?: boolean
   razorpayOrderId?: boolean
   razorpayPaymentId?: boolean
   razorpaySignature?: boolean
-  status?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["recharge"]>
 
 export type RechargeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
   amount?: boolean
-  currency?: boolean
+  createdAt?: boolean
   credits?: boolean
+  currency?: boolean
+  status?: boolean
+  updatedAt?: boolean
   razorpayOrderId?: boolean
   razorpayPaymentId?: boolean
   razorpaySignature?: boolean
-  status?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["recharge"]>
 
 export type RechargeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
   amount?: boolean
-  currency?: boolean
+  createdAt?: boolean
   credits?: boolean
+  currency?: boolean
+  status?: boolean
+  updatedAt?: boolean
   razorpayOrderId?: boolean
   razorpayPaymentId?: boolean
   razorpaySignature?: boolean
-  status?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["recharge"]>
 
 export type RechargeSelectScalar = {
   id?: boolean
   userId?: boolean
   amount?: boolean
-  currency?: boolean
+  createdAt?: boolean
   credits?: boolean
+  currency?: boolean
+  status?: boolean
+  updatedAt?: boolean
   razorpayOrderId?: boolean
   razorpayPaymentId?: boolean
   razorpaySignature?: boolean
-  status?: boolean
-  createdAt?: boolean
-  updatedAt?: boolean
 }
 
-export type RechargeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "amount" | "currency" | "credits" | "razorpayOrderId" | "razorpayPaymentId" | "razorpaySignature" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["recharge"]>
+export type RechargeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "amount" | "createdAt" | "credits" | "currency" | "status" | "updatedAt" | "razorpayOrderId" | "razorpayPaymentId" | "razorpaySignature", ExtArgs["result"]["recharge"]>
 export type RechargeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type RechargeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type RechargeIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  User?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $RechargePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Recharge"
   objects: {
-    user: Prisma.$UserPayload<ExtArgs>
+    User: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
     amount: number
-    currency: string
+    createdAt: Date
     credits: number
+    currency: string
+    status: $Enums.RechargeStatus
+    updatedAt: Date
     razorpayOrderId: string | null
     razorpayPaymentId: string | null
     razorpaySignature: string | null
-    status: $Enums.RechargeStatus
-    createdAt: Date
-    updatedAt: Date
   }, ExtArgs["result"]["recharge"]>
   composites: {}
 }
@@ -1157,7 +1161,7 @@ readonly fields: RechargeFieldRefs;
  */
 export interface Prisma__RechargeClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  User<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1190,14 +1194,14 @@ export interface RechargeFieldRefs {
   readonly id: Prisma.FieldRef<"Recharge", 'String'>
   readonly userId: Prisma.FieldRef<"Recharge", 'String'>
   readonly amount: Prisma.FieldRef<"Recharge", 'Float'>
-  readonly currency: Prisma.FieldRef<"Recharge", 'String'>
+  readonly createdAt: Prisma.FieldRef<"Recharge", 'DateTime'>
   readonly credits: Prisma.FieldRef<"Recharge", 'Int'>
+  readonly currency: Prisma.FieldRef<"Recharge", 'String'>
+  readonly status: Prisma.FieldRef<"Recharge", 'RechargeStatus'>
+  readonly updatedAt: Prisma.FieldRef<"Recharge", 'DateTime'>
   readonly razorpayOrderId: Prisma.FieldRef<"Recharge", 'String'>
   readonly razorpayPaymentId: Prisma.FieldRef<"Recharge", 'String'>
   readonly razorpaySignature: Prisma.FieldRef<"Recharge", 'String'>
-  readonly status: Prisma.FieldRef<"Recharge", 'RechargeStatus'>
-  readonly createdAt: Prisma.FieldRef<"Recharge", 'DateTime'>
-  readonly updatedAt: Prisma.FieldRef<"Recharge", 'DateTime'>
 }
     
 

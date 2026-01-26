@@ -6,6 +6,10 @@ import {
   registerUser,
   loginUser,
   googleAuth,
+  forgotPassword,
+  resetPassword,
+  resendOtp,
+  changePassword,
 } from "./user.controller";
 import { $ref } from "./user.schema";
 
@@ -55,5 +59,28 @@ export const UserRoutes = async (app: FastifyInstance) => {
       },
     },
     editUser
+  );
+
+  app.post(
+    "/forgot-password",
+    { schema: { body: $ref("ForgotPasswordSchema") } },
+    forgotPassword
+  );
+
+  app.post(
+    "/reset-password",
+    { schema: { body: $ref("ResetPasswordSchema") } },
+    resetPassword
+  );
+
+  app.post("/resend-otp", resendOtp);
+
+  app.put(
+    "/change-password",
+    {
+      preHandler: [app.authenticate],
+      schema: { body: $ref("ChangePasswordSchema") },
+    },
+    changePassword
   );
 };

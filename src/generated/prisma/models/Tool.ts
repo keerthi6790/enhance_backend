@@ -30,9 +30,9 @@ export type ToolMinAggregateOutputType = {
   description: string | null
   image: string | null
   link: string | null
-  isEnabled: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  isEnabled: boolean | null
 }
 
 export type ToolMaxAggregateOutputType = {
@@ -41,9 +41,9 @@ export type ToolMaxAggregateOutputType = {
   description: string | null
   image: string | null
   link: string | null
-  isEnabled: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  isEnabled: boolean | null
 }
 
 export type ToolCountAggregateOutputType = {
@@ -52,9 +52,9 @@ export type ToolCountAggregateOutputType = {
   description: number
   image: number
   link: number
-  isEnabled: number
   createdAt: number
   updatedAt: number
+  isEnabled: number
   _all: number
 }
 
@@ -65,9 +65,9 @@ export type ToolMinAggregateInputType = {
   description?: true
   image?: true
   link?: true
-  isEnabled?: true
   createdAt?: true
   updatedAt?: true
+  isEnabled?: true
 }
 
 export type ToolMaxAggregateInputType = {
@@ -76,9 +76,9 @@ export type ToolMaxAggregateInputType = {
   description?: true
   image?: true
   link?: true
-  isEnabled?: true
   createdAt?: true
   updatedAt?: true
+  isEnabled?: true
 }
 
 export type ToolCountAggregateInputType = {
@@ -87,9 +87,9 @@ export type ToolCountAggregateInputType = {
   description?: true
   image?: true
   link?: true
-  isEnabled?: true
   createdAt?: true
   updatedAt?: true
+  isEnabled?: true
   _all?: true
 }
 
@@ -171,9 +171,9 @@ export type ToolGroupByOutputType = {
   description: string
   image: string
   link: string
-  isEnabled: boolean
   createdAt: Date
   updatedAt: Date
+  isEnabled: boolean
   _count: ToolCountAggregateOutputType | null
   _min: ToolMinAggregateOutputType | null
   _max: ToolMaxAggregateOutputType | null
@@ -203,9 +203,9 @@ export type ToolWhereInput = {
   description?: Prisma.StringFilter<"Tool"> | string
   image?: Prisma.StringFilter<"Tool"> | string
   link?: Prisma.StringFilter<"Tool"> | string
-  isEnabled?: Prisma.BoolFilter<"Tool"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Tool"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Tool"> | Date | string
+  isEnabled?: Prisma.BoolFilter<"Tool"> | boolean
 }
 
 export type ToolOrderByWithRelationInput = {
@@ -214,9 +214,9 @@ export type ToolOrderByWithRelationInput = {
   description?: Prisma.SortOrder
   image?: Prisma.SortOrder
   link?: Prisma.SortOrder
-  isEnabled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isEnabled?: Prisma.SortOrder
 }
 
 export type ToolWhereUniqueInput = Prisma.AtLeast<{
@@ -228,9 +228,9 @@ export type ToolWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringFilter<"Tool"> | string
   image?: Prisma.StringFilter<"Tool"> | string
   link?: Prisma.StringFilter<"Tool"> | string
-  isEnabled?: Prisma.BoolFilter<"Tool"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Tool"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Tool"> | Date | string
+  isEnabled?: Prisma.BoolFilter<"Tool"> | boolean
 }, "id">
 
 export type ToolOrderByWithAggregationInput = {
@@ -239,9 +239,9 @@ export type ToolOrderByWithAggregationInput = {
   description?: Prisma.SortOrder
   image?: Prisma.SortOrder
   link?: Prisma.SortOrder
-  isEnabled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isEnabled?: Prisma.SortOrder
   _count?: Prisma.ToolCountOrderByAggregateInput
   _max?: Prisma.ToolMaxOrderByAggregateInput
   _min?: Prisma.ToolMinOrderByAggregateInput
@@ -256,31 +256,31 @@ export type ToolScalarWhereWithAggregatesInput = {
   description?: Prisma.StringWithAggregatesFilter<"Tool"> | string
   image?: Prisma.StringWithAggregatesFilter<"Tool"> | string
   link?: Prisma.StringWithAggregatesFilter<"Tool"> | string
-  isEnabled?: Prisma.BoolWithAggregatesFilter<"Tool"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Tool"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Tool"> | Date | string
+  isEnabled?: Prisma.BoolWithAggregatesFilter<"Tool"> | boolean
 }
 
 export type ToolCreateInput = {
-  id?: string
+  id: string
   name: string
   description: string
   image: string
   link: string
-  isEnabled?: boolean
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt: Date | string
+  isEnabled?: boolean
 }
 
 export type ToolUncheckedCreateInput = {
-  id?: string
+  id: string
   name: string
   description: string
   image: string
   link: string
-  isEnabled?: boolean
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt: Date | string
+  isEnabled?: boolean
 }
 
 export type ToolUpdateInput = {
@@ -289,9 +289,9 @@ export type ToolUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.StringFieldUpdateOperationsInput | string
   link?: Prisma.StringFieldUpdateOperationsInput | string
-  isEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ToolUncheckedUpdateInput = {
@@ -300,20 +300,20 @@ export type ToolUncheckedUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.StringFieldUpdateOperationsInput | string
   link?: Prisma.StringFieldUpdateOperationsInput | string
-  isEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ToolCreateManyInput = {
-  id?: string
+  id: string
   name: string
   description: string
   image: string
   link: string
-  isEnabled?: boolean
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt: Date | string
+  isEnabled?: boolean
 }
 
 export type ToolUpdateManyMutationInput = {
@@ -322,9 +322,9 @@ export type ToolUpdateManyMutationInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.StringFieldUpdateOperationsInput | string
   link?: Prisma.StringFieldUpdateOperationsInput | string
-  isEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ToolUncheckedUpdateManyInput = {
@@ -333,9 +333,9 @@ export type ToolUncheckedUpdateManyInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.StringFieldUpdateOperationsInput | string
   link?: Prisma.StringFieldUpdateOperationsInput | string
-  isEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ToolCountOrderByAggregateInput = {
@@ -344,9 +344,9 @@ export type ToolCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   image?: Prisma.SortOrder
   link?: Prisma.SortOrder
-  isEnabled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isEnabled?: Prisma.SortOrder
 }
 
 export type ToolMaxOrderByAggregateInput = {
@@ -355,9 +355,9 @@ export type ToolMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   image?: Prisma.SortOrder
   link?: Prisma.SortOrder
-  isEnabled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isEnabled?: Prisma.SortOrder
 }
 
 export type ToolMinOrderByAggregateInput = {
@@ -366,9 +366,9 @@ export type ToolMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   image?: Prisma.SortOrder
   link?: Prisma.SortOrder
-  isEnabled?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isEnabled?: Prisma.SortOrder
 }
 
 export type BoolFieldUpdateOperationsInput = {
@@ -383,9 +383,9 @@ export type ToolSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   description?: boolean
   image?: boolean
   link?: boolean
-  isEnabled?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isEnabled?: boolean
 }, ExtArgs["result"]["tool"]>
 
 export type ToolSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -394,9 +394,9 @@ export type ToolSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   description?: boolean
   image?: boolean
   link?: boolean
-  isEnabled?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isEnabled?: boolean
 }, ExtArgs["result"]["tool"]>
 
 export type ToolSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -405,9 +405,9 @@ export type ToolSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   description?: boolean
   image?: boolean
   link?: boolean
-  isEnabled?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isEnabled?: boolean
 }, ExtArgs["result"]["tool"]>
 
 export type ToolSelectScalar = {
@@ -416,12 +416,12 @@ export type ToolSelectScalar = {
   description?: boolean
   image?: boolean
   link?: boolean
-  isEnabled?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isEnabled?: boolean
 }
 
-export type ToolOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "image" | "link" | "isEnabled" | "createdAt" | "updatedAt", ExtArgs["result"]["tool"]>
+export type ToolOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "image" | "link" | "createdAt" | "updatedAt" | "isEnabled", ExtArgs["result"]["tool"]>
 
 export type $ToolPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Tool"
@@ -432,9 +432,9 @@ export type $ToolPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     description: string
     image: string
     link: string
-    isEnabled: boolean
     createdAt: Date
     updatedAt: Date
+    isEnabled: boolean
   }, ExtArgs["result"]["tool"]>
   composites: {}
 }
@@ -863,9 +863,9 @@ export interface ToolFieldRefs {
   readonly description: Prisma.FieldRef<"Tool", 'String'>
   readonly image: Prisma.FieldRef<"Tool", 'String'>
   readonly link: Prisma.FieldRef<"Tool", 'String'>
-  readonly isEnabled: Prisma.FieldRef<"Tool", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Tool", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Tool", 'DateTime'>
+  readonly isEnabled: Prisma.FieldRef<"Tool", 'Boolean'>
 }
     
 

@@ -9,14 +9,6 @@
 * 🟢 You can import this file directly.
 */
 
-export const SignInType = {
-  GOOGLE: 'GOOGLE',
-  NORMAL: 'NORMAL'
-} as const
-
-export type SignInType = (typeof SignInType)[keyof typeof SignInType]
-
-
 export const RechargeStatus = {
   PENDING: 'PENDING',
   COMPLETED: 'COMPLETED',
@@ -24,3 +16,11 @@ export const RechargeStatus = {
 } as const
 
 export type RechargeStatus = (typeof RechargeStatus)[keyof typeof RechargeStatus]
+
+
+export const SignInType = {
+  GOOGLE: 'GOOGLE',
+  NORMAL: 'NORMAL'
+} as const
+
+export type SignInType = (typeof SignInType)[keyof typeof SignInType]

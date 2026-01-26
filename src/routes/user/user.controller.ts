@@ -4,6 +4,7 @@ import { CreateUser, LoginUser } from "./user.schema";
 import bcrypt from "bcrypt";
 import { GenerateSixDigitOtp } from "../../utils/GenerateOtp";
 import { OAuth2Client } from "google-auth-library";
+import { sendOtpEmail, sendForgotPasswordEmail } from "../../utils/EmailService";
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
@@ -42,8 +43,8 @@ export const requestEmail = async (
       expiresAt: Date.now() + 10 * 60 * 1000, // 10 minutes
     };
 
-    // TODO: Send OTP to email (implement email service)
-    console.log(`OTP for ${email}: ${otp}`);
+    // Send OTP to email
+    await sendOtpEmail(email, otp);
 
     return reply.code(200).send({
       message: "OTP sent to email",
@@ -436,6 +437,156 @@ export const editUser = async (
     }
     reply.code(500).send({
       message: "Error updating user",
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+};
+
+// Step 8: Forgot Password
+export const forgotPassword = async (
+  req: FastifyRequest<{ Body: { email: string } }>,
+  reply: FastifyReply
+) => {
+  try {
+    const { email } = req.body;
+
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) {
+      return reply.code(404).send({ message: "User not found" });
+    }
+
+    if (user.signInType === "GOOGLE") {
+      return reply.code(400).send({
+        message: "This account is linked to Google. Use Google sign-in instead.",
+      });
+    }
+
+    const otp = GenerateSixDigitOtp();
+    otpStore[email] = {
+      otp,
+      expiresAt: Date.now() + 10 * 60 * 1000, // 10 minutes
+    };
+
+    await sendForgotPasswordEmail(email, otp);
+
+    return reply.code(200).send({
+      message: "Password reset OTP sent to email",
+      email,
+    });
+  } catch (error) {
+    reply.code(500).send({
+      message: "Error processing forgot password request",
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+};
+
+// Step 9: Reset Password
+export const resetPassword = async (
+  req: FastifyRequest<{ Body: { email: string; otp: number; password: string } }>,
+  reply: FastifyReply
+) => {
+  try {
+    const { email, otp, password } = req.body;
+
+    const otpData = otpStore[email];
+
+    if (!otpData || otpData.otp !== otp || otpData.expiresAt < Date.now()) {
+      return reply.code(400).send({
+        message: "Invalid or expired OTP",
+      });
+    }
+
+    delete otpStore[email];
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    await prisma.user.update({
+      where: { email },
+      data: { hashed_password: hashedPassword },
+    });
+
+    return reply.code(200).send({
+      message: "Password reset successfully",
+    });
+  } catch (error) {
+    reply.code(500).send({
+      message: "Error resetting password",
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+};
+
+// Step 10: Resend OTP
+export const resendOtp = async (
+  req: FastifyRequest<{ Body: { email: string; type: "REGISTRATION" | "FORGOT_PASSWORD" } }>,
+  reply: FastifyReply
+) => {
+  try {
+    const { email, type } = req.body;
+
+    const otp = GenerateSixDigitOtp();
+    otpStore[email] = {
+      otp,
+      expiresAt: Date.now() + 10 * 60 * 1000, // 10 minutes
+    };
+
+    if (type === "REGISTRATION") {
+      await sendOtpEmail(email, otp);
+    } else {
+      await sendForgotPasswordEmail(email, otp);
+    }
+
+    return reply.code(200).send({
+      message: "New OTP sent to email",
+      email,
+    });
+  } catch (error) {
+    reply.code(500).send({
+      message: "Error resending OTP",
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+};
+
+// Step 11: Change Password (Logged-in)
+export const changePassword = async (
+  req: FastifyRequest<{ Body: { oldPassword: string; newPassword: string } }>,
+  reply: FastifyReply
+) => {
+  try {
+    const userId = (req as any).user.id;
+    const { oldPassword, newPassword } = req.body;
+
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user || !user.hashed_password) {
+      return reply.code(404).send({ message: "User not found or using social login" });
+    }
+
+    const isMatch = await bcrypt.compare(oldPassword, user.hashed_password);
+    if (!isMatch) {
+      return reply.code(400).send({ message: "Incorrect old password" });
+    }
+
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+
+    await prisma.user.update({
+      where: { id: userId },
+      data: { hashed_password: hashedNewPassword },
+    });
+
+    return reply.code(200).send({
+      message: "Password changed successfully",
+    });
+  } catch (error) {
+    reply.code(500).send({
+      message: "Error changing password",
       error: error instanceof Error ? error.message : "Unknown error",
     });
   }

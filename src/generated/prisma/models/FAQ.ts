@@ -238,21 +238,21 @@ export type FAQScalarWhereWithAggregatesInput = {
 }
 
 export type FAQCreateInput = {
-  id?: string
+  id: string
   title: string
   description: string
   pagename: string
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt: Date | string
 }
 
 export type FAQUncheckedCreateInput = {
-  id?: string
+  id: string
   title: string
   description: string
   pagename: string
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt: Date | string
 }
 
 export type FAQUpdateInput = {
@@ -274,12 +274,12 @@ export type FAQUncheckedUpdateInput = {
 }
 
 export type FAQCreateManyInput = {
-  id?: string
+  id: string
   title: string
   description: string
   pagename: string
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt: Date | string
 }
 
 export type FAQUpdateManyMutationInput = {
@@ -325,6 +325,14 @@ export type FAQMinOrderByAggregateInput = {
   pagename?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type StringFieldUpdateOperationsInput = {
+  set?: string
+}
+
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
 }
 
 

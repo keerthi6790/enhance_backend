@@ -57,6 +57,21 @@ export const EditUserSchema = z.object({
     .optional(),
 });
 
+export const ForgotPasswordSchema = z.object({
+  email: z.string().email("Invalid email address"),
+});
+
+export const ResetPasswordSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  otp: z.number(),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
+
+export const ChangePasswordSchema = z.object({
+  oldPassword: z.string().min(6, "Password must be at least 6 characters"),
+  newPassword: z.string().min(6, "Password must be at least 6 characters"),
+});
+
 export type CreateUser = z.infer<typeof CreateUserSchema>;
 export type UpdateUser = z.infer<typeof UpdateUserSchema>;
 export type LoginUser = z.infer<typeof LoginUserSchema>;
@@ -71,6 +86,9 @@ export const { schemas: userSchema, $ref } = buildJsonSchemas(
     GoogleAuthSchema,
     GetUserDataQuerySchema,
     EditUserSchema,
+    ForgotPasswordSchema,
+    ResetPasswordSchema,
+    ChangePasswordSchema,
   },
   { $id: "userSchema" }
 );

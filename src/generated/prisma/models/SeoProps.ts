@@ -262,25 +262,25 @@ export type SeoPropsScalarWhereWithAggregatesInput = {
 }
 
 export type SeoPropsCreateInput = {
-  id?: string
+  id: string
   title: string
   description: string
   keywords: string
   image: string
   pagename: string
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt: Date | string
 }
 
 export type SeoPropsUncheckedCreateInput = {
-  id?: string
+  id: string
   title: string
   description: string
   keywords: string
   image: string
   pagename: string
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt: Date | string
 }
 
 export type SeoPropsUpdateInput = {
@@ -306,14 +306,14 @@ export type SeoPropsUncheckedUpdateInput = {
 }
 
 export type SeoPropsCreateManyInput = {
-  id?: string
+  id: string
   title: string
   description: string
   keywords: string
   image: string
   pagename: string
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt: Date | string
 }
 
 export type SeoPropsUpdateManyMutationInput = {

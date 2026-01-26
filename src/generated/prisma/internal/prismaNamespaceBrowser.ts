@@ -49,12 +49,13 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 
 
 export const ModelName = {
-  User: 'User',
-  Recharge: 'Recharge',
-  Tool: 'Tool',
-  PricingTier: 'PricingTier',
   FAQ: 'FAQ',
-  SeoProps: 'SeoProps'
+  PricingTier: 'PricingTier',
+  Recharge: 'Recharge',
+  SeoProps: 'SeoProps',
+  Team: 'Team',
+  Tool: 'Tool',
+  User: 'User'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -73,67 +74,6 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const UserScalarFieldEnum = {
-  id: 'id',
-  firstName: 'firstName',
-  lastName: 'lastName',
-  email: 'email',
-  phoneNumber: 'phoneNumber',
-  hashed_password: 'hashed_password',
-  signInType: 'signInType',
-  credits: 'credits',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
-
-
-export const RechargeScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  amount: 'amount',
-  currency: 'currency',
-  credits: 'credits',
-  razorpayOrderId: 'razorpayOrderId',
-  razorpayPaymentId: 'razorpayPaymentId',
-  razorpaySignature: 'razorpaySignature',
-  status: 'status',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type RechargeScalarFieldEnum = (typeof RechargeScalarFieldEnum)[keyof typeof RechargeScalarFieldEnum]
-
-
-export const ToolScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  description: 'description',
-  image: 'image',
-  link: 'link',
-  isEnabled: 'isEnabled',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type ToolScalarFieldEnum = (typeof ToolScalarFieldEnum)[keyof typeof ToolScalarFieldEnum]
-
-
-export const PricingTierScalarFieldEnum = {
-  id: 'id',
-  minAmount: 'minAmount',
-  multiplier: 'multiplier',
-  currency: 'currency',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  title: 'title',
-  desc: 'desc'
-} as const
-
-export type PricingTierScalarFieldEnum = (typeof PricingTierScalarFieldEnum)[keyof typeof PricingTierScalarFieldEnum]
-
-
 export const FAQScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -144,6 +84,37 @@ export const FAQScalarFieldEnum = {
 } as const
 
 export type FAQScalarFieldEnum = (typeof FAQScalarFieldEnum)[keyof typeof FAQScalarFieldEnum]
+
+
+export const PricingTierScalarFieldEnum = {
+  id: 'id',
+  minAmount: 'minAmount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  currency: 'currency',
+  multiplier: 'multiplier',
+  desc: 'desc',
+  title: 'title'
+} as const
+
+export type PricingTierScalarFieldEnum = (typeof PricingTierScalarFieldEnum)[keyof typeof PricingTierScalarFieldEnum]
+
+
+export const RechargeScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  amount: 'amount',
+  createdAt: 'createdAt',
+  credits: 'credits',
+  currency: 'currency',
+  status: 'status',
+  updatedAt: 'updatedAt',
+  razorpayOrderId: 'razorpayOrderId',
+  razorpayPaymentId: 'razorpayPaymentId',
+  razorpaySignature: 'razorpaySignature'
+} as const
+
+export type RechargeScalarFieldEnum = (typeof RechargeScalarFieldEnum)[keyof typeof RechargeScalarFieldEnum]
 
 
 export const SeoPropsScalarFieldEnum = {
@@ -158,6 +129,47 @@ export const SeoPropsScalarFieldEnum = {
 } as const
 
 export type SeoPropsScalarFieldEnum = (typeof SeoPropsScalarFieldEnum)[keyof typeof SeoPropsScalarFieldEnum]
+
+
+export const TeamScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TeamScalarFieldEnum = (typeof TeamScalarFieldEnum)[keyof typeof TeamScalarFieldEnum]
+
+
+export const ToolScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  image: 'image',
+  link: 'link',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isEnabled: 'isEnabled'
+} as const
+
+export type ToolScalarFieldEnum = (typeof ToolScalarFieldEnum)[keyof typeof ToolScalarFieldEnum]
+
+
+export const UserScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  phoneNumber: 'phoneNumber',
+  hashed_password: 'hashed_password',
+  signInType: 'signInType',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  credits: 'credits'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
 export const SortOrder = {

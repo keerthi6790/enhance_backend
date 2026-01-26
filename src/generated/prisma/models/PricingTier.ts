@@ -39,34 +39,34 @@ export type PricingTierSumAggregateOutputType = {
 export type PricingTierMinAggregateOutputType = {
   id: string | null
   minAmount: number | null
-  multiplier: number | null
-  currency: string | null
   createdAt: Date | null
   updatedAt: Date | null
-  title: string | null
+  currency: string | null
+  multiplier: number | null
   desc: string | null
+  title: string | null
 }
 
 export type PricingTierMaxAggregateOutputType = {
   id: string | null
   minAmount: number | null
-  multiplier: number | null
-  currency: string | null
   createdAt: Date | null
   updatedAt: Date | null
-  title: string | null
+  currency: string | null
+  multiplier: number | null
   desc: string | null
+  title: string | null
 }
 
 export type PricingTierCountAggregateOutputType = {
   id: number
   minAmount: number
-  multiplier: number
-  currency: number
   createdAt: number
   updatedAt: number
-  title: number
+  currency: number
+  multiplier: number
   desc: number
+  title: number
   _all: number
 }
 
@@ -84,34 +84,34 @@ export type PricingTierSumAggregateInputType = {
 export type PricingTierMinAggregateInputType = {
   id?: true
   minAmount?: true
-  multiplier?: true
-  currency?: true
   createdAt?: true
   updatedAt?: true
-  title?: true
+  currency?: true
+  multiplier?: true
   desc?: true
+  title?: true
 }
 
 export type PricingTierMaxAggregateInputType = {
   id?: true
   minAmount?: true
-  multiplier?: true
-  currency?: true
   createdAt?: true
   updatedAt?: true
-  title?: true
+  currency?: true
+  multiplier?: true
   desc?: true
+  title?: true
 }
 
 export type PricingTierCountAggregateInputType = {
   id?: true
   minAmount?: true
-  multiplier?: true
-  currency?: true
   createdAt?: true
   updatedAt?: true
-  title?: true
+  currency?: true
+  multiplier?: true
   desc?: true
+  title?: true
   _all?: true
 }
 
@@ -204,12 +204,12 @@ export type PricingTierGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 export type PricingTierGroupByOutputType = {
   id: string
   minAmount: number
-  multiplier: number
-  currency: string
   createdAt: Date
   updatedAt: Date
-  title: string
+  currency: string
+  multiplier: number
   desc: string
+  title: string
   _count: PricingTierCountAggregateOutputType | null
   _avg: PricingTierAvgAggregateOutputType | null
   _sum: PricingTierSumAggregateOutputType | null
@@ -238,23 +238,23 @@ export type PricingTierWhereInput = {
   NOT?: Prisma.PricingTierWhereInput | Prisma.PricingTierWhereInput[]
   id?: Prisma.StringFilter<"PricingTier"> | string
   minAmount?: Prisma.FloatFilter<"PricingTier"> | number
-  multiplier?: Prisma.FloatFilter<"PricingTier"> | number
-  currency?: Prisma.StringFilter<"PricingTier"> | string
   createdAt?: Prisma.DateTimeFilter<"PricingTier"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PricingTier"> | Date | string
-  title?: Prisma.StringFilter<"PricingTier"> | string
+  currency?: Prisma.StringFilter<"PricingTier"> | string
+  multiplier?: Prisma.FloatFilter<"PricingTier"> | number
   desc?: Prisma.StringFilter<"PricingTier"> | string
+  title?: Prisma.StringFilter<"PricingTier"> | string
 }
 
 export type PricingTierOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   minAmount?: Prisma.SortOrder
-  multiplier?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  title?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  multiplier?: Prisma.SortOrder
   desc?: Prisma.SortOrder
+  title?: Prisma.SortOrder
 }
 
 export type PricingTierWhereUniqueInput = Prisma.AtLeast<{
@@ -264,23 +264,23 @@ export type PricingTierWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.PricingTierWhereInput[]
   NOT?: Prisma.PricingTierWhereInput | Prisma.PricingTierWhereInput[]
   minAmount?: Prisma.FloatFilter<"PricingTier"> | number
-  multiplier?: Prisma.FloatFilter<"PricingTier"> | number
-  currency?: Prisma.StringFilter<"PricingTier"> | string
   createdAt?: Prisma.DateTimeFilter<"PricingTier"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PricingTier"> | Date | string
-  title?: Prisma.StringFilter<"PricingTier"> | string
+  currency?: Prisma.StringFilter<"PricingTier"> | string
+  multiplier?: Prisma.FloatFilter<"PricingTier"> | number
   desc?: Prisma.StringFilter<"PricingTier"> | string
+  title?: Prisma.StringFilter<"PricingTier"> | string
 }, "id" | "minAmount_currency">
 
 export type PricingTierOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   minAmount?: Prisma.SortOrder
-  multiplier?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  title?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  multiplier?: Prisma.SortOrder
   desc?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   _count?: Prisma.PricingTierCountOrderByAggregateInput
   _avg?: Prisma.PricingTierAvgOrderByAggregateInput
   _max?: Prisma.PricingTierMaxOrderByAggregateInput
@@ -294,89 +294,89 @@ export type PricingTierScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PricingTierScalarWhereWithAggregatesInput | Prisma.PricingTierScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"PricingTier"> | string
   minAmount?: Prisma.FloatWithAggregatesFilter<"PricingTier"> | number
-  multiplier?: Prisma.FloatWithAggregatesFilter<"PricingTier"> | number
-  currency?: Prisma.StringWithAggregatesFilter<"PricingTier"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"PricingTier"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"PricingTier"> | Date | string
-  title?: Prisma.StringWithAggregatesFilter<"PricingTier"> | string
+  currency?: Prisma.StringWithAggregatesFilter<"PricingTier"> | string
+  multiplier?: Prisma.FloatWithAggregatesFilter<"PricingTier"> | number
   desc?: Prisma.StringWithAggregatesFilter<"PricingTier"> | string
+  title?: Prisma.StringWithAggregatesFilter<"PricingTier"> | string
 }
 
 export type PricingTierCreateInput = {
-  id?: string
+  id: string
   minAmount: number
-  multiplier: number
-  currency?: string
   createdAt?: Date | string
-  updatedAt?: Date | string
-  title?: string
+  updatedAt: Date | string
+  currency?: string
+  multiplier: number
   desc?: string
+  title?: string
 }
 
 export type PricingTierUncheckedCreateInput = {
-  id?: string
+  id: string
   minAmount: number
-  multiplier: number
-  currency?: string
   createdAt?: Date | string
-  updatedAt?: Date | string
-  title?: string
+  updatedAt: Date | string
+  currency?: string
+  multiplier: number
   desc?: string
+  title?: string
 }
 
 export type PricingTierUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   minAmount?: Prisma.FloatFieldUpdateOperationsInput | number
-  multiplier?: Prisma.FloatFieldUpdateOperationsInput | number
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  multiplier?: Prisma.FloatFieldUpdateOperationsInput | number
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PricingTierUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   minAmount?: Prisma.FloatFieldUpdateOperationsInput | number
-  multiplier?: Prisma.FloatFieldUpdateOperationsInput | number
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  multiplier?: Prisma.FloatFieldUpdateOperationsInput | number
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PricingTierCreateManyInput = {
-  id?: string
+  id: string
   minAmount: number
-  multiplier: number
-  currency?: string
   createdAt?: Date | string
-  updatedAt?: Date | string
-  title?: string
+  updatedAt: Date | string
+  currency?: string
+  multiplier: number
   desc?: string
+  title?: string
 }
 
 export type PricingTierUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   minAmount?: Prisma.FloatFieldUpdateOperationsInput | number
-  multiplier?: Prisma.FloatFieldUpdateOperationsInput | number
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  multiplier?: Prisma.FloatFieldUpdateOperationsInput | number
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PricingTierUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   minAmount?: Prisma.FloatFieldUpdateOperationsInput | number
-  multiplier?: Prisma.FloatFieldUpdateOperationsInput | number
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  multiplier?: Prisma.FloatFieldUpdateOperationsInput | number
   desc?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PricingTierMinAmountCurrencyCompoundUniqueInput = {
@@ -387,12 +387,12 @@ export type PricingTierMinAmountCurrencyCompoundUniqueInput = {
 export type PricingTierCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   minAmount?: Prisma.SortOrder
-  multiplier?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  title?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  multiplier?: Prisma.SortOrder
   desc?: Prisma.SortOrder
+  title?: Prisma.SortOrder
 }
 
 export type PricingTierAvgOrderByAggregateInput = {
@@ -403,23 +403,23 @@ export type PricingTierAvgOrderByAggregateInput = {
 export type PricingTierMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   minAmount?: Prisma.SortOrder
-  multiplier?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  title?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  multiplier?: Prisma.SortOrder
   desc?: Prisma.SortOrder
+  title?: Prisma.SortOrder
 }
 
 export type PricingTierMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   minAmount?: Prisma.SortOrder
-  multiplier?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  title?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
+  multiplier?: Prisma.SortOrder
   desc?: Prisma.SortOrder
+  title?: Prisma.SortOrder
 }
 
 export type PricingTierSumOrderByAggregateInput = {
@@ -427,53 +427,61 @@ export type PricingTierSumOrderByAggregateInput = {
   multiplier?: Prisma.SortOrder
 }
 
+export type FloatFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 
 
 export type PricingTierSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   minAmount?: boolean
-  multiplier?: boolean
-  currency?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  title?: boolean
+  currency?: boolean
+  multiplier?: boolean
   desc?: boolean
+  title?: boolean
 }, ExtArgs["result"]["pricingTier"]>
 
 export type PricingTierSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   minAmount?: boolean
-  multiplier?: boolean
-  currency?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  title?: boolean
+  currency?: boolean
+  multiplier?: boolean
   desc?: boolean
+  title?: boolean
 }, ExtArgs["result"]["pricingTier"]>
 
 export type PricingTierSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   minAmount?: boolean
-  multiplier?: boolean
-  currency?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  title?: boolean
+  currency?: boolean
+  multiplier?: boolean
   desc?: boolean
+  title?: boolean
 }, ExtArgs["result"]["pricingTier"]>
 
 export type PricingTierSelectScalar = {
   id?: boolean
   minAmount?: boolean
-  multiplier?: boolean
-  currency?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  title?: boolean
+  currency?: boolean
+  multiplier?: boolean
   desc?: boolean
+  title?: boolean
 }
 
-export type PricingTierOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "minAmount" | "multiplier" | "currency" | "createdAt" | "updatedAt" | "title" | "desc", ExtArgs["result"]["pricingTier"]>
+export type PricingTierOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "minAmount" | "createdAt" | "updatedAt" | "currency" | "multiplier" | "desc" | "title", ExtArgs["result"]["pricingTier"]>
 
 export type $PricingTierPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PricingTier"
@@ -481,12 +489,12 @@ export type $PricingTierPayload<ExtArgs extends runtime.Types.Extensions.Interna
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     minAmount: number
-    multiplier: number
-    currency: string
     createdAt: Date
     updatedAt: Date
-    title: string
+    currency: string
+    multiplier: number
     desc: string
+    title: string
   }, ExtArgs["result"]["pricingTier"]>
   composites: {}
 }
@@ -912,12 +920,12 @@ export interface Prisma__PricingTierClient<T, Null = never, ExtArgs extends runt
 export interface PricingTierFieldRefs {
   readonly id: Prisma.FieldRef<"PricingTier", 'String'>
   readonly minAmount: Prisma.FieldRef<"PricingTier", 'Float'>
-  readonly multiplier: Prisma.FieldRef<"PricingTier", 'Float'>
-  readonly currency: Prisma.FieldRef<"PricingTier", 'String'>
   readonly createdAt: Prisma.FieldRef<"PricingTier", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"PricingTier", 'DateTime'>
-  readonly title: Prisma.FieldRef<"PricingTier", 'String'>
+  readonly currency: Prisma.FieldRef<"PricingTier", 'String'>
+  readonly multiplier: Prisma.FieldRef<"PricingTier", 'Float'>
   readonly desc: Prisma.FieldRef<"PricingTier", 'String'>
+  readonly title: Prisma.FieldRef<"PricingTier", 'String'>
 }
     
 

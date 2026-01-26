@@ -42,9 +42,9 @@ export type UserMinAggregateOutputType = {
   phoneNumber: string | null
   hashed_password: string | null
   signInType: $Enums.SignInType | null
-  credits: number | null
   createdAt: Date | null
   updatedAt: Date | null
+  credits: number | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -55,9 +55,9 @@ export type UserMaxAggregateOutputType = {
   phoneNumber: string | null
   hashed_password: string | null
   signInType: $Enums.SignInType | null
-  credits: number | null
   createdAt: Date | null
   updatedAt: Date | null
+  credits: number | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -68,9 +68,9 @@ export type UserCountAggregateOutputType = {
   phoneNumber: number
   hashed_password: number
   signInType: number
-  credits: number
   createdAt: number
   updatedAt: number
+  credits: number
   _all: number
 }
 
@@ -91,9 +91,9 @@ export type UserMinAggregateInputType = {
   phoneNumber?: true
   hashed_password?: true
   signInType?: true
-  credits?: true
   createdAt?: true
   updatedAt?: true
+  credits?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -104,9 +104,9 @@ export type UserMaxAggregateInputType = {
   phoneNumber?: true
   hashed_password?: true
   signInType?: true
-  credits?: true
   createdAt?: true
   updatedAt?: true
+  credits?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -117,9 +117,9 @@ export type UserCountAggregateInputType = {
   phoneNumber?: true
   hashed_password?: true
   signInType?: true
-  credits?: true
   createdAt?: true
   updatedAt?: true
+  credits?: true
   _all?: true
 }
 
@@ -217,9 +217,9 @@ export type UserGroupByOutputType = {
   phoneNumber: string | null
   hashed_password: string | null
   signInType: $Enums.SignInType
-  credits: number
   createdAt: Date
   updatedAt: Date
+  credits: number
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -253,10 +253,11 @@ export type UserWhereInput = {
   phoneNumber?: Prisma.StringNullableFilter<"User"> | string | null
   hashed_password?: Prisma.StringNullableFilter<"User"> | string | null
   signInType?: Prisma.EnumSignInTypeFilter<"User"> | $Enums.SignInType
-  credits?: Prisma.IntFilter<"User"> | number
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  recharges?: Prisma.RechargeListRelationFilter
+  credits?: Prisma.IntFilter<"User"> | number
+  Recharge?: Prisma.RechargeListRelationFilter
+  Team?: Prisma.TeamListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -267,10 +268,11 @@ export type UserOrderByWithRelationInput = {
   phoneNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   hashed_password?: Prisma.SortOrderInput | Prisma.SortOrder
   signInType?: Prisma.SortOrder
-  credits?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  recharges?: Prisma.RechargeOrderByRelationAggregateInput
+  credits?: Prisma.SortOrder
+  Recharge?: Prisma.RechargeOrderByRelationAggregateInput
+  Team?: Prisma.TeamOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -284,10 +286,11 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   phoneNumber?: Prisma.StringNullableFilter<"User"> | string | null
   hashed_password?: Prisma.StringNullableFilter<"User"> | string | null
   signInType?: Prisma.EnumSignInTypeFilter<"User"> | $Enums.SignInType
-  credits?: Prisma.IntFilter<"User"> | number
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  recharges?: Prisma.RechargeListRelationFilter
+  credits?: Prisma.IntFilter<"User"> | number
+  Recharge?: Prisma.RechargeListRelationFilter
+  Team?: Prisma.TeamListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -298,9 +301,9 @@ export type UserOrderByWithAggregationInput = {
   phoneNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   hashed_password?: Prisma.SortOrderInput | Prisma.SortOrder
   signInType?: Prisma.SortOrder
-  credits?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  credits?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -319,37 +322,39 @@ export type UserScalarWhereWithAggregatesInput = {
   phoneNumber?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   hashed_password?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   signInType?: Prisma.EnumSignInTypeWithAggregatesFilter<"User"> | $Enums.SignInType
-  credits?: Prisma.IntWithAggregatesFilter<"User"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  credits?: Prisma.IntWithAggregatesFilter<"User"> | number
 }
 
 export type UserCreateInput = {
-  id?: string
+  id: string
   firstName: string
   lastName: string
   email: string
   phoneNumber?: string | null
   hashed_password?: string | null
   signInType?: $Enums.SignInType
-  credits?: number
   createdAt?: Date | string
-  updatedAt?: Date | string
-  recharges?: Prisma.RechargeCreateNestedManyWithoutUserInput
+  updatedAt: Date | string
+  credits?: number
+  Recharge?: Prisma.RechargeCreateNestedManyWithoutUserInput
+  Team?: Prisma.TeamCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
-  id?: string
+  id: string
   firstName: string
   lastName: string
   email: string
   phoneNumber?: string | null
   hashed_password?: string | null
   signInType?: $Enums.SignInType
-  credits?: number
   createdAt?: Date | string
-  updatedAt?: Date | string
-  recharges?: Prisma.RechargeUncheckedCreateNestedManyWithoutUserInput
+  updatedAt: Date | string
+  credits?: number
+  Recharge?: Prisma.RechargeUncheckedCreateNestedManyWithoutUserInput
+  Team?: Prisma.TeamUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -360,10 +365,11 @@ export type UserUpdateInput = {
   phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   hashed_password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   signInType?: Prisma.EnumSignInTypeFieldUpdateOperationsInput | $Enums.SignInType
-  credits?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recharges?: Prisma.RechargeUpdateManyWithoutUserNestedInput
+  credits?: Prisma.IntFieldUpdateOperationsInput | number
+  Recharge?: Prisma.RechargeUpdateManyWithoutUserNestedInput
+  Team?: Prisma.TeamUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -374,23 +380,24 @@ export type UserUncheckedUpdateInput = {
   phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   hashed_password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   signInType?: Prisma.EnumSignInTypeFieldUpdateOperationsInput | $Enums.SignInType
-  credits?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recharges?: Prisma.RechargeUncheckedUpdateManyWithoutUserNestedInput
+  credits?: Prisma.IntFieldUpdateOperationsInput | number
+  Recharge?: Prisma.RechargeUncheckedUpdateManyWithoutUserNestedInput
+  Team?: Prisma.TeamUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
-  id?: string
+  id: string
   firstName: string
   lastName: string
   email: string
   phoneNumber?: string | null
   hashed_password?: string | null
   signInType?: $Enums.SignInType
-  credits?: number
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt: Date | string
+  credits?: number
 }
 
 export type UserUpdateManyMutationInput = {
@@ -401,9 +408,9 @@ export type UserUpdateManyMutationInput = {
   phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   hashed_password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   signInType?: Prisma.EnumSignInTypeFieldUpdateOperationsInput | $Enums.SignInType
-  credits?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  credits?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -414,9 +421,24 @@ export type UserUncheckedUpdateManyInput = {
   phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   hashed_password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   signInType?: Prisma.EnumSignInTypeFieldUpdateOperationsInput | $Enums.SignInType
-  credits?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  credits?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
+}
+
+export type UserListRelationFilter = {
+  every?: Prisma.UserWhereInput
+  some?: Prisma.UserWhereInput
+  none?: Prisma.UserWhereInput
+}
+
+export type UserOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -427,9 +449,9 @@ export type UserCountOrderByAggregateInput = {
   phoneNumber?: Prisma.SortOrder
   hashed_password?: Prisma.SortOrder
   signInType?: Prisma.SortOrder
-  credits?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  credits?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
@@ -444,9 +466,9 @@ export type UserMaxOrderByAggregateInput = {
   phoneNumber?: Prisma.SortOrder
   hashed_password?: Prisma.SortOrder
   signInType?: Prisma.SortOrder
-  credits?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  credits?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -457,101 +479,116 @@ export type UserMinOrderByAggregateInput = {
   phoneNumber?: Prisma.SortOrder
   hashed_password?: Prisma.SortOrder
   signInType?: Prisma.SortOrder
-  credits?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  credits?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
   credits?: Prisma.SortOrder
 }
 
-export type UserScalarRelationFilter = {
-  is?: Prisma.UserWhereInput
-  isNot?: Prisma.UserWhereInput
+export type UserCreateNestedOneWithoutRechargeInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRechargeInput, Prisma.UserUncheckedCreateWithoutRechargeInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRechargeInput
+  connect?: Prisma.UserWhereUniqueInput
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
+export type UserUpdateOneRequiredWithoutRechargeNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRechargeInput, Prisma.UserUncheckedCreateWithoutRechargeInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRechargeInput
+  upsert?: Prisma.UserUpsertWithoutRechargeInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRechargeInput, Prisma.UserUpdateWithoutRechargeInput>, Prisma.UserUncheckedUpdateWithoutRechargeInput>
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
+export type UserCreateNestedManyWithoutTeamInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTeamInput, Prisma.UserUncheckedCreateWithoutTeamInput> | Prisma.UserCreateWithoutTeamInput[] | Prisma.UserUncheckedCreateWithoutTeamInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTeamInput | Prisma.UserCreateOrConnectWithoutTeamInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+}
+
+export type UserUncheckedCreateNestedManyWithoutTeamInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTeamInput, Prisma.UserUncheckedCreateWithoutTeamInput> | Prisma.UserCreateWithoutTeamInput[] | Prisma.UserUncheckedCreateWithoutTeamInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTeamInput | Prisma.UserCreateOrConnectWithoutTeamInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+}
+
+export type UserUpdateManyWithoutTeamNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTeamInput, Prisma.UserUncheckedCreateWithoutTeamInput> | Prisma.UserCreateWithoutTeamInput[] | Prisma.UserUncheckedCreateWithoutTeamInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTeamInput | Prisma.UserCreateOrConnectWithoutTeamInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutTeamInput | Prisma.UserUpsertWithWhereUniqueWithoutTeamInput[]
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutTeamInput | Prisma.UserUpdateWithWhereUniqueWithoutTeamInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutTeamInput | Prisma.UserUpdateManyWithWhereWithoutTeamInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+}
+
+export type UserUncheckedUpdateManyWithoutTeamNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTeamInput, Prisma.UserUncheckedCreateWithoutTeamInput> | Prisma.UserCreateWithoutTeamInput[] | Prisma.UserUncheckedCreateWithoutTeamInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTeamInput | Prisma.UserCreateOrConnectWithoutTeamInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutTeamInput | Prisma.UserUpsertWithWhereUniqueWithoutTeamInput[]
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutTeamInput | Prisma.UserUpdateWithWhereUniqueWithoutTeamInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutTeamInput | Prisma.UserUpdateManyWithWhereWithoutTeamInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
 export type EnumSignInTypeFieldUpdateOperationsInput = {
   set?: $Enums.SignInType
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
-export type UserCreateNestedOneWithoutRechargesInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRechargesInput, Prisma.UserUncheckedCreateWithoutRechargesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRechargesInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutRechargesNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRechargesInput, Prisma.UserUncheckedCreateWithoutRechargesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRechargesInput
-  upsert?: Prisma.UserUpsertWithoutRechargesInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRechargesInput, Prisma.UserUpdateWithoutRechargesInput>, Prisma.UserUncheckedUpdateWithoutRechargesInput>
-}
-
-export type UserCreateWithoutRechargesInput = {
-  id?: string
+export type UserCreateWithoutRechargeInput = {
+  id: string
   firstName: string
   lastName: string
   email: string
   phoneNumber?: string | null
   hashed_password?: string | null
   signInType?: $Enums.SignInType
-  credits?: number
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt: Date | string
+  credits?: number
+  Team?: Prisma.TeamCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutRechargesInput = {
-  id?: string
+export type UserUncheckedCreateWithoutRechargeInput = {
+  id: string
   firstName: string
   lastName: string
   email: string
   phoneNumber?: string | null
   hashed_password?: string | null
   signInType?: $Enums.SignInType
-  credits?: number
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt: Date | string
+  credits?: number
+  Team?: Prisma.TeamUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutRechargesInput = {
+export type UserCreateOrConnectWithoutRechargeInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutRechargesInput, Prisma.UserUncheckedCreateWithoutRechargesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRechargeInput, Prisma.UserUncheckedCreateWithoutRechargeInput>
 }
 
-export type UserUpsertWithoutRechargesInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutRechargesInput, Prisma.UserUncheckedUpdateWithoutRechargesInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutRechargesInput, Prisma.UserUncheckedCreateWithoutRechargesInput>
+export type UserUpsertWithoutRechargeInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRechargeInput, Prisma.UserUncheckedUpdateWithoutRechargeInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRechargeInput, Prisma.UserUncheckedCreateWithoutRechargeInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutRechargesInput = {
+export type UserUpdateToOneWithWhereWithoutRechargeInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutRechargesInput, Prisma.UserUncheckedUpdateWithoutRechargesInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRechargeInput, Prisma.UserUncheckedUpdateWithoutRechargeInput>
 }
 
-export type UserUpdateWithoutRechargesInput = {
+export type UserUpdateWithoutRechargeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -559,12 +596,13 @@ export type UserUpdateWithoutRechargesInput = {
   phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   hashed_password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   signInType?: Prisma.EnumSignInTypeFieldUpdateOperationsInput | $Enums.SignInType
-  credits?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  credits?: Prisma.IntFieldUpdateOperationsInput | number
+  Team?: Prisma.TeamUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutRechargesInput = {
+export type UserUncheckedUpdateWithoutRechargeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -572,9 +610,116 @@ export type UserUncheckedUpdateWithoutRechargesInput = {
   phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   hashed_password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   signInType?: Prisma.EnumSignInTypeFieldUpdateOperationsInput | $Enums.SignInType
-  credits?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  credits?: Prisma.IntFieldUpdateOperationsInput | number
+  Team?: Prisma.TeamUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutTeamInput = {
+  id: string
+  firstName: string
+  lastName: string
+  email: string
+  phoneNumber?: string | null
+  hashed_password?: string | null
+  signInType?: $Enums.SignInType
+  createdAt?: Date | string
+  updatedAt: Date | string
+  credits?: number
+  Recharge?: Prisma.RechargeCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutTeamInput = {
+  id: string
+  firstName: string
+  lastName: string
+  email: string
+  phoneNumber?: string | null
+  hashed_password?: string | null
+  signInType?: $Enums.SignInType
+  createdAt?: Date | string
+  updatedAt: Date | string
+  credits?: number
+  Recharge?: Prisma.RechargeUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutTeamInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTeamInput, Prisma.UserUncheckedCreateWithoutTeamInput>
+}
+
+export type UserUpsertWithWhereUniqueWithoutTeamInput = {
+  where: Prisma.UserWhereUniqueInput
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTeamInput, Prisma.UserUncheckedUpdateWithoutTeamInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTeamInput, Prisma.UserUncheckedCreateWithoutTeamInput>
+}
+
+export type UserUpdateWithWhereUniqueWithoutTeamInput = {
+  where: Prisma.UserWhereUniqueInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTeamInput, Prisma.UserUncheckedUpdateWithoutTeamInput>
+}
+
+export type UserUpdateManyWithWhereWithoutTeamInput = {
+  where: Prisma.UserScalarWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutTeamInput>
+}
+
+export type UserScalarWhereInput = {
+  AND?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+  OR?: Prisma.UserScalarWhereInput[]
+  NOT?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+  id?: Prisma.StringFilter<"User"> | string
+  firstName?: Prisma.StringFilter<"User"> | string
+  lastName?: Prisma.StringFilter<"User"> | string
+  email?: Prisma.StringFilter<"User"> | string
+  phoneNumber?: Prisma.StringNullableFilter<"User"> | string | null
+  hashed_password?: Prisma.StringNullableFilter<"User"> | string | null
+  signInType?: Prisma.EnumSignInTypeFilter<"User"> | $Enums.SignInType
+  createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  credits?: Prisma.IntFilter<"User"> | number
+}
+
+export type UserUpdateWithoutTeamInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashed_password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  signInType?: Prisma.EnumSignInTypeFieldUpdateOperationsInput | $Enums.SignInType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  credits?: Prisma.IntFieldUpdateOperationsInput | number
+  Recharge?: Prisma.RechargeUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTeamInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashed_password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  signInType?: Prisma.EnumSignInTypeFieldUpdateOperationsInput | $Enums.SignInType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  credits?: Prisma.IntFieldUpdateOperationsInput | number
+  Recharge?: Prisma.RechargeUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateManyWithoutTeamInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashed_password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  signInType?: Prisma.EnumSignInTypeFieldUpdateOperationsInput | $Enums.SignInType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  credits?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -583,11 +728,13 @@ export type UserUncheckedUpdateWithoutRechargesInput = {
  */
 
 export type UserCountOutputType = {
-  recharges: number
+  Recharge: number
+  Team: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  recharges?: boolean | UserCountOutputTypeCountRechargesArgs
+  Recharge?: boolean | UserCountOutputTypeCountRechargeArgs
+  Team?: boolean | UserCountOutputTypeCountTeamArgs
 }
 
 /**
@@ -603,8 +750,15 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountRechargesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type UserCountOutputTypeCountRechargeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.RechargeWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTeamArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TeamWhereInput
 }
 
 
@@ -616,10 +770,11 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   phoneNumber?: boolean
   hashed_password?: boolean
   signInType?: boolean
-  credits?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  recharges?: boolean | Prisma.User$rechargesArgs<ExtArgs>
+  credits?: boolean
+  Recharge?: boolean | Prisma.User$RechargeArgs<ExtArgs>
+  Team?: boolean | Prisma.User$TeamArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -631,9 +786,9 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   phoneNumber?: boolean
   hashed_password?: boolean
   signInType?: boolean
-  credits?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  credits?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -644,9 +799,9 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   phoneNumber?: boolean
   hashed_password?: boolean
   signInType?: boolean
-  credits?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  credits?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -657,14 +812,15 @@ export type UserSelectScalar = {
   phoneNumber?: boolean
   hashed_password?: boolean
   signInType?: boolean
-  credits?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  credits?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "phoneNumber" | "hashed_password" | "signInType" | "credits" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "firstName" | "lastName" | "email" | "phoneNumber" | "hashed_password" | "signInType" | "createdAt" | "updatedAt" | "credits", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  recharges?: boolean | Prisma.User$rechargesArgs<ExtArgs>
+  Recharge?: boolean | Prisma.User$RechargeArgs<ExtArgs>
+  Team?: boolean | Prisma.User$TeamArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -673,7 +829,8 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    recharges: Prisma.$RechargePayload<ExtArgs>[]
+    Recharge: Prisma.$RechargePayload<ExtArgs>[]
+    Team: Prisma.$TeamPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -683,9 +840,9 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     phoneNumber: string | null
     hashed_password: string | null
     signInType: $Enums.SignInType
-    credits: number
     createdAt: Date
     updatedAt: Date
+    credits: number
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1080,7 +1237,8 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  recharges<T extends Prisma.User$rechargesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$rechargesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RechargePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  Recharge<T extends Prisma.User$RechargeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$RechargeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RechargePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  Team<T extends Prisma.User$TeamArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$TeamArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TeamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1117,9 +1275,9 @@ export interface UserFieldRefs {
   readonly phoneNumber: Prisma.FieldRef<"User", 'String'>
   readonly hashed_password: Prisma.FieldRef<"User", 'String'>
   readonly signInType: Prisma.FieldRef<"User", 'SignInType'>
-  readonly credits: Prisma.FieldRef<"User", 'Int'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly credits: Prisma.FieldRef<"User", 'Int'>
 }
     
 
@@ -1508,9 +1666,9 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * User.recharges
+ * User.Recharge
  */
-export type User$rechargesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$RechargeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Recharge
    */
@@ -1529,6 +1687,30 @@ export type User$rechargesArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.RechargeScalarFieldEnum | Prisma.RechargeScalarFieldEnum[]
+}
+
+/**
+ * User.Team
+ */
+export type User$TeamArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Team
+   */
+  select?: Prisma.TeamSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Team
+   */
+  omit?: Prisma.TeamOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TeamInclude<ExtArgs> | null
+  where?: Prisma.TeamWhereInput
+  orderBy?: Prisma.TeamOrderByWithRelationInput | Prisma.TeamOrderByWithRelationInput[]
+  cursor?: Prisma.TeamWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TeamScalarFieldEnum | Prisma.TeamScalarFieldEnum[]
 }
 
 /**
